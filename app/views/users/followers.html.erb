@@ -1,0 +1,23 @@
+<h2>Follows User</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @followers.each do |follows| %>
+      <tr>
+        <th><%= image_tag follows.get_profile_image("50x50") %></th>
+        <th><%= follows.name %></th>
+        <th><p>フォロー数：<%= follows.followeds.count %></p></th>
+        <th><p>フォロワー数：<%= follows.followers.count %></p></th>
+        <th><%= link_to "Show",user_path(follows.id) %></th>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
