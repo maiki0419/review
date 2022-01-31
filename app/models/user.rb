@@ -35,6 +35,22 @@ class User < ApplicationRecord
     relationships.exists?(followed_id: user.id)
   end
 
+  def self.looks(search,word)
+
+    if search == "perfect"
+      @user = User.where("name LIKE?", "#{word}")
+    elsif search == "forward"
+      @user = User.where("name LIKE?", "#{word}%")
+    elsif search == "backward"
+      @user = User.where("name LIKE?", "%#{word}")
+    elsif search == "part"
+      @user = User.where("name LIKE?", "%#{word}%")
+    else
+      @user = User.all
+    end
+
+  end
+
 
 
 
