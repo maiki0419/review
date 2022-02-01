@@ -9,7 +9,7 @@ before_action :ensure_correct_user,only: [:edit]
   end
 
   def index
-    @books = Book.all
+    @books = Book.created_1week.sort{|a,b| b.favorites.size <=> a.favorites.size}
     @book = Book.new
   end
 
