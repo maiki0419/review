@@ -1,0 +1,18 @@
+<div class="container">
+  <% @entries.each do |entry| %>
+    <% if entry.user_id != current_user.id %>
+      <h2><%= entry.user.name %>さんとのチャット</h2>
+    <% end %>
+  <% end %>
+  <% @messages.each do |message| %>
+
+    <p><%= message.body %></p>
+  <% end %>
+
+  <%= form_with model: @message, local: true do |f| %>
+    <%= f.text_field :body %>
+    <%= f.hidden_field :room_id,value: "#{@room.id}" %>
+    <%= f.submit "送信" %>
+  <% end %>
+</div>
+
