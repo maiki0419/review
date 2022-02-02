@@ -6,6 +6,7 @@ before_action :ensure_correct_user,only: [:edit]
     @user = @book.user
     @book_comment = BookComment.new
     @book_comments = @book.book_comments
+    impressionist(@book, nil, unique: [:ip_address])
   end
 
   def index
