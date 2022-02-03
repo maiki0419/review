@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_many :followeds,through: :revers_of_relationships,source: :follower
 
 
+ 
+
+
 
 
   has_one_attached :profile_image

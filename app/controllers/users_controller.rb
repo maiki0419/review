@@ -26,6 +26,25 @@ class UsersController < ApplicationController
         @entry = Entry.new
       end
     end
+# 7b
+    # @create_today = @user.books.create_today
+    # @create_yesterday = @user.books.create_yesterday
+    # @ratio = @create_today.count/@create_yesterday.count.to_f
+    # @create_thisweek = @user.books.create_thisweek
+    # @create_lastweek = @user.books.create_lastweek
+    # @week_ratio = @create_thisweek.count/@create_lastweek.count.to_f
+
+    @create_today = @user.books.create_today
+    @create_1day =@user.books.create_1day
+    @create_2day =@user.books.create_2day
+    @create_3day =@user.books.create_3day
+   @create_4day =@user.books.create_4day
+    @create_5day =@user.books.create_5day
+    @create_6day =@user.books.create_6day
+
+
+
+
   end
 
   def index
