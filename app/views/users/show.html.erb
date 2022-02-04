@@ -10,8 +10,12 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
-      <%= render 'bookrecord8b' %>
+      <%= form_with url: user_path(@user.id),method: :get,local: false do |f| %>
+        <%= f.date_field :day %>
+        <%= f.submit "検索",class: "btn btn-primary" %>
+      <% end %>
+      <div id="bookrecord">
+      </div>
     </div>
-
   </div>
 </div>
