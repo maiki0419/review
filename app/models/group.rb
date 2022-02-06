@@ -12,4 +12,8 @@ class Group < ApplicationRecord
     image_id.variant(resize: size).processed
   end
 
+  def group_by?(group)
+    
+  end
+
 end

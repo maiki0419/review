@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   resources :rooms, only: [:create, :show]
   resources :messages, only: [:create]
 
-  resources :groups, only: [:new, :create, :edit, :update, :show, :index]
+  resources :groups, only: [:new, :create, :edit, :update, :show, :index] do
+    get :join, on: :member
+    get :out, on: :member
+  end
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
