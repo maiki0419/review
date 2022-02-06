@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :groups, only: [:new, :create, :edit, :update, :show, :index] do
     get :join, on: :member
     get :out, on: :member
+    get :mailer_new,on: :member
+    get :mailer_create,on: :member
   end
 
 

@@ -1,0 +1,11 @@
+<h2>Event Mail</h2>
+  <%= form_with url: mailer_create_group_path(group.id),method: :get, local: false do |f| %>
+    <%= f.label :Title %>
+    <%= f.text_field :title, class: "form-control" %>
+    <%= f.label :Content %>
+    <%= f.text_area :content, class: "form-control" %>
+    <div class="text-right">
+      <%= f.submit "送信", class: "btn btn-success mt-3 text-right"%>
+    </div>
+
+  <% end %>
