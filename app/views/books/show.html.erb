@@ -24,7 +24,20 @@
             </div>
           </td>
           <td id="comment"><p>コメント数：<%= @book.book_comments.count %></p></td>
-          <td>閲覧数：<%= @book.impressions_count %></td>
+            <td>
+              <div id="star-rate-<%= @book.id %>"></div>
+            </td>
+
+          <script>
+                $('#star-rate-<%= @book.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  readOnly: true,
+                  score: <%= @book.rate %>,
+              });
+          </script>
+
           <% if @book.user.id == current_user.id%>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
             <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' },remote: true, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
