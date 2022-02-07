@@ -6,6 +6,7 @@ class Book < ApplicationRecord
 
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
+  validates :rate,presence:true
 
   scope :created_1week, -> {where(created_at: 1.week.ago.beginning_of_day .. Time.zone.now.end_of_day)}
 
