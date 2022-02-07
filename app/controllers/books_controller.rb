@@ -10,8 +10,14 @@ before_action :ensure_correct_user,only: [:edit]
   end
 
   def index
-    @books = Book.created_1week.sort{|a,b| b.favorites.size <=> a.favorites.size}
-    @book = Book.new
+    if params[:create]
+      @books = Book.all.order(created_at: "DESC")
+    elsif params[:rate]
+      @books = Book.all.order(rate: "DESC")
+    else
+      @books = Book.created_1week.sort{|a,b| b.favorites.size <=> a.favorites.size}
+    end
+      @book = Book.new
   end
 
   def create
