@@ -3,6 +3,7 @@ before_action :ensure_correct_user,only: [:edit]
   def show
     @book = Book.find(params[:id])
     @book_new = Book.new
+    @category = @book_new.categories.new
     @user = @book.user
     @book_comment = BookComment.new
     @book_comments = @book.book_comments
@@ -18,6 +19,7 @@ before_action :ensure_correct_user,only: [:edit]
       @books = Book.created_1week.sort{|a,b| b.favorites.size <=> a.favorites.size}
     end
       @book = Book.new
+     @category = @book.categories.new
   end
 
   def create
@@ -53,7 +55,7 @@ before_action :ensure_correct_user,only: [:edit]
   private
 
   def book_params
-    params.require(:book).permit(:title,:body, :rate)
+    params.require(:book).permit(:title,:body, :rate, categories_attributes: [:name, :_destroy])
   end
 
   def ensure_correct_user

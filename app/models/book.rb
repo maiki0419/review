@@ -2,6 +2,8 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
+  has_many :categories, dependent: :destroy
+  accepts_nested_attributes_for :categories, allow_destroy: true
   is_impressionable counter_cache: true
 
   validates :title,presence:true

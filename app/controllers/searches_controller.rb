@@ -10,5 +10,10 @@ class SearchesController < ApplicationController
       @books = Book.looks(@search,@word)
     end
   end
+  
+  def categorysearch
+    @word = params[:word]
+    @categories = Category.where(name: @word)
+  end
 
 end
