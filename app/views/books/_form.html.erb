@@ -6,6 +6,10 @@
   <div class="form-group">
     <%= f.label :opinion %>
     <%= f.text_area :body, class: 'form-control book_body' %>
+    <%= f.fields_for :categories  do |c| %>
+      <%= c.label :category %>
+      <%= c.text_field :name, class: 'form-control book_body' %>
+    <% end %>
   </div>
   <div class="field" id="star">
     <%= f.label :rate, "星評価",id: "e" %>
